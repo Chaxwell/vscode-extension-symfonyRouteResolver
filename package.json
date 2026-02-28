@@ -1,0 +1,70 @@
+{
+  "name": "symfony-route-resolver",
+  "publisher": "Chaxwell",
+  "displayName": "Symfony Route Resolver",
+  "description": "Clickable links for Symfony route names — navigates directly to the PHP controller declaration.",
+  "version": "0.9.0",
+  "engines": {
+    "vscode": "^1.95.0",
+    "node": ">=24"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "symfony-route-resolver.reindex",
+        "title": "Symfony Route Resolver: Re-index routes"
+      }
+    ],
+    "configuration": {
+      "title": "Symfony Route Resolver",
+      "properties": {
+        "symfony-route-resolver.symfonyBinaryPath": {
+          "type": "string",
+          "default": "symfony",
+          "description": "Path to the Symfony CLI binary. Defaults to `symfony` (must be in $PATH)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile-rust && npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "compile-rust:dev": "node scripts/build-sidecar.mjs linux --dev",
+    "compile-rust:linux": "node scripts/build-sidecar.mjs linux",
+    "compile-rust:linux-arm": "node scripts/build-sidecar.mjs linux-arm",
+    "compile-rust:mac": "node scripts/build-sidecar.mjs mac",
+    "compile-rust:mac-arm": "node scripts/build-sidecar.mjs mac-arm",
+    "compile-rust:windows": "node scripts/build-sidecar.mjs windows",
+    "package:linux": "npm run compile-rust:linux && vsce package --target linux-x64",
+    "package:linux-arm": "npm run compile-rust:linux-arm && vsce package --target linux-arm64",
+    "package:mac": "npm run compile-rust:mac && vsce package --target darwin-x64",
+    "package:mac-arm": "npm run compile-rust:mac-arm && vsce package --target darwin-arm64",
+    "package:windows": "npm run compile-rust:windows && vsce package --target win32-x64",
+    "test:rust": "cd sidecar && cargo test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.95.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.54.0",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "ts-loader": "^9.5.4",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
