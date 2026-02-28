@@ -83,8 +83,8 @@ npm run compile-rust:linux
 
 # Other available targets
 npm run compile-rust:linux-arm   # Linux ARM64
-npm run compile-rust:mac         # macOS Intel
-npm run compile-rust:mac-arm     # macOS Apple Silicon
+npm run compile-rust:mac         # macOS Intel (must be run on macOS)
+npm run compile-rust:mac-arm     # macOS Apple Silicon (must be run on macOS)
 npm run compile-rust:windows     # Windows x64
 
 # Package the extension
@@ -94,5 +94,6 @@ npm run package:linux
 npm run test:rust
 ```
 
-> Cross-compilation requires [`cross`](https://github.com/cross-rs/cross) and Docker.
-> Without cross, install the target toolchain via `rustup target add <triple>`.
+> **Linux & Windows** targets can be cross-compiled from Linux using [`cross`](https://github.com/cross-rs/cross) + Docker, or by installing the target toolchain via `rustup target add <triple>`.
+>
+> **macOS** targets require a native macOS environment. Cross-compiling for macOS from Linux requires the Apple SDK, which cannot be freely redistributed. Run `compile-rust:mac` and `compile-rust:mac-arm` directly on a Mac.
