@@ -64,6 +64,8 @@ Links are activated in the following languages:
 - PHP (`.php`)
 - Twig (`.twig`)
 - YAML (`.yaml`, `.yml`)
+- JavaScript (`.js`, `.jsx`)
+- TypeScript (`.ts`, `.tsx`)
 
 ## Technical architecture
 

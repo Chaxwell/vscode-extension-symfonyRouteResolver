@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext): void {
     // -----------------------------------------------------------------------
 
     const linkProvider = new DocumentLinkProvider(sidecar);
-    const supportedLanguages = ['php', 'twig', 'yaml'];
+    const supportedLanguages = ['php', 'twig', 'yaml', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'];
 
     for (const language of supportedLanguages) {
         context.subscriptions.push(
