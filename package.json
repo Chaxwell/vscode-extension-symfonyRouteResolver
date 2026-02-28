@@ -8,6 +8,9 @@
     "vscode": "^1.95.0",
     "node": ">=24"
   },
+  "repository": {
+    "url": "https://github.com/Chaxwell/vscode-extension-symfonyRouteResolver"
+  },
   "categories": [
     "Other"
   ],
@@ -32,7 +35,7 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile-rust && npm run package",
+    "vscode:prepublish": "npm run package",
     "compile": "webpack",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map",
