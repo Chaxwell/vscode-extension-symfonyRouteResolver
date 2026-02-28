@@ -764,6 +764,7 @@ name = "sidecar"
 version = "0.1.0"
 dependencies = [
  "aho-corasick",
+ "blake3",
  "bumpalo",
  "mago-database",
  "mago-span",
